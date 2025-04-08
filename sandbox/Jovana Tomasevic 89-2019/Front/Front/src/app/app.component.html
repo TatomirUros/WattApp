@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>ToDo List :</h1>
+
+  <div class="Task">
+    <div class="tasks-form">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="naslov">
+      <p>Add task </p>
+      <a><i class="fa-regular fa-square-plus"></i></a>
+      </div>
+      <div class="form-group">
+        <label for="">Task name : </label>
+        <input type="text" name="taskName" [(ngModel)]="task.taskName">
+      </div>
+
+      <div class="form-group">
+        <label for="">Task description : </label>
+        <input type="text" name="taskDescription" [(ngModel)]="task.taskDescription">
+      </div>
+
+      <div class="form-group">
+        <label for="">Limit (in days) : </label>
+        <input type="text" name="taskDate" [(ngModel)]="task.expiryDate">
+      </div>
+
+      <div class="form-group">
+       <button>Add</button>
+      </div>
+
+    </form>
+  </div>
+  
+  <div class="listOfTask">
+    <div class="naslov">
+      <p>Show all tasks   </p>
+      <a><i class="fa-solid fa-list"></i></a>
+    </div>
+
+    <div class="task-row" *ngFor="let task of tasks">
+      <div class="taskDetails">
+        <span>{{task.taskName}}</span>
+      </div>
+      <div class="DeleteButton">
+        <a (click)="SeeDescriptionOfATask(task.taskId)"><i class="fa-solid fa-question"></i></a>
+        <a (click)="UpdateATask(task.taskId)"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a (click)="deleteTask(task.taskId)"><i class="fa-sharp fa-solid fa-circle-check"></i></a>
+      </div>
+      <p name="description" *ngIf="desc==task.taskDescription" >{{task.taskDescription}}<p>
+      
+    </div>
+  
+  </div>
+
+</div>
+
+

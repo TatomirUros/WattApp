@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<section class="vh-100" style="background-color: #e2d5de;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+
+        <div class="card">
+          <div class="card-body p-5">
+            <h1 style="justify-content: center; display: flex;">TO-DO LIST</h1>
+          
+            <!-- prva -->
+            <form class="d-flex justify-content-center align-items-center mb-4" (ngSubmit)="create()">
+              <div class="form-outline flex-fill" >
+                  <input [(ngModel)]="task.toDo" name="title" type="text" id="form2" class="form-control" placeholder="New task..."/>
+              </div>
+              <button type="submit" class="btn btn-info ms-2">Add</button>
+            </form>
+            
+            <!-- druga -->
+            <ul class="list-group mb-0">
+              <li *ngFor="let task of tasks"
+                class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
+                <div class="d-flex align-items-center">
+                  <input [checked]="task.isSelected" (change)="cekiraj(task)" class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
+                  <label for="" [ngClass]="{'precrtaj': task.isSelected}">{{ task.toDo }}</label>
+                </div>
+                <a href="#!" data-mdb-toggle="tooltip" title="Remove item" (click)="obrisi(task)">
+                  <i class="fas fa-times text-primary"></i>
+                </a>
+              </li>
+          </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

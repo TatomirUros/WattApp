@@ -1,0 +1,21 @@
+<button (click)="initNewBook()">Create New Book</button>
+
+
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.title}}</td>
+      <td>{{ book.description}}</td>
+      <td><button (click)="editBook(book)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<app-edit-book 
+  [book]="bookToEdit" 
+  (bookUpdated)="updateBookList($event)"
+  ></app-edit-book>
